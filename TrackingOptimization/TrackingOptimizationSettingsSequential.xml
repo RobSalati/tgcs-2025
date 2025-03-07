@@ -7,9 +7,9 @@
 		<!--Directory for input files-->
 		<tracked_quantities_directory>TOInputsSequential</tracked_quantities_directory>
 		<!--Name of the input model file (.osim) to use-->
-        <input_model_file>ModelSequential.osim</input_model_file>
+        <input_model_file>TOInputsSequential\UF_Subject_1_Scaled_JMPSequential.osim</input_model_file>
 		<!--Name of the osimx model file-->
-		<input_osimx_file>gcpResultsSequential\ModelSequential_gcp.osimx</input_osimx_file>
+		<input_osimx_file>TOInputsSequential\UF_Subject_1_Scaled_JMPSequential_gcp.osimx</input_osimx_file>
 		<!--Name of optimal controls setting file-->
 		<optimal_control_solver_settings_file>gpopsSettings.xml</optimal_control_solver_settings_file>
 		<!--name, excluding file type (.sto, .mot, etc), of the trial-->
