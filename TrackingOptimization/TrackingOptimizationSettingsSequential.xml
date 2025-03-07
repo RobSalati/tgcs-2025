@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NMSMPipelineDocument Version="1.3.3">
+	<TrackingOptimizationTool>
+		<!--Directory used for writing results.-->
+		<results_directory>TOResultsSequential</results_directory>
+		<initial_guess_directory>TOInputsSequential</initial_guess_directory>
+		<!--Directory for input files-->
+		<tracked_quantities_directory>TOInputsSequential</tracked_quantities_directory>
+		<!--Name of the input model file (.osim) to use-->
+        <input_model_file>ModelSequential.osim</input_model_file>
+		<!--Name of the osimx model file-->
+		<input_osimx_file>gcpResultsSequential\ModelSequential_gcp.osimx</input_osimx_file>
+		<!--Name of optimal controls setting file-->
+		<optimal_control_solver_settings_file>gpopsSettings.xml</optimal_control_solver_settings_file>
+		<!--name, excluding file type (.sto, .mot, etc), of the trial-->
+		<trial_name>gait_1</trial_name>
+		<!--Synergy Driven Optimal Control problem settings-->
+        <states_coordinate_list>hip_flexion_r hip_adduction_r hip_rotation_r knee_angle_r ankle_angle_r subtalar_angle_r mtp_angle_r hip_flexion_l hip_adduction_l hip_rotation_l knee_angle_l ankle_angle_l subtalar_angle_l mtp_angle_l pelvis_tx pelvis_ty pelvis_tz pelvis_tilt pelvis_rotation pelvis_list lumbar_extension lumbar_bending lumbar_rotation arm_flex_r arm_add_r arm_rot_r elbow_flex_r arm_flex_l arm_add_l arm_rot_l elbow_flex_l</states_coordinate_list>
+        <joint_position_range_scale_factor>1.5</joint_position_range_scale_factor>
+        <joint_velocity_range_scale_factor>1.25</joint_velocity_range_scale_factor>
+        <joint_acceleration_range_scale_factor>1</joint_acceleration_range_scale_factor>
+		<RCNLTorqueController>
+			<initial_torque_controls_file/>
+			<coordinate_list>hip_flexion_r hip_adduction_r hip_rotation_r knee_angle_r ankle_angle_r subtalar_angle_r hip_flexion_l hip_adduction_l hip_rotation_l knee_angle_l ankle_angle_l subtalar_angle_l</coordinate_list>
+			<torque_controls_max>200</torque_controls_max>
+		</RCNLTorqueController>
+		<RCNLCostTermSet>
+			<RCNLCostTerm name="position tracking pelvis tx">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>pelvis_tx</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.01</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking pelvis tz">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>pelvis_tz</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.01</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking pelvis rotation">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>pelvis_rotation</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			
+			<RCNLCostTerm name="position tracking hip flexion">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>hip_flexion_r hip_flexion_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking hip adduction">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>hip_adduction_r hip_adduction_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking hip rotation">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>hip_rotation_r hip_rotation_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking knee">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>knee_angle_r knee_angle_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking ankle">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>ankle_angle_r ankle_angle_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking subtalar">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>subtalar_angle_r subtalar_angle_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.0873</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking mtp">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>mtp_angle_r mtp_angle_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.0873</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking lumbar">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>lumbar_extension lumbar_rotation lumbar_bending</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="position tracking upper limb">
+				<type>generalized_coordinate_tracking</type>
+				<coordinate_list>arm_flex_r arm_add_r arm_rot_r elbow_flex_r arm_flex_l arm_add_l arm_rot_l elbow_flex_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1745</max_allowable_error>
+			</RCNLCostTerm>
+			
+			<RCNLCostTerm name="velocity tracking pelvis">
+				<type>generalized_speed_tracking</type>
+				<coordinate_list>pelvis_tx pelvis_tz</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.1</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="velocity tracking pelvis">
+				<type>generalized_speed_tracking</type>
+				<coordinate_list>pelvis_rotation</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.5</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="velocity tracking lower limb">
+				<type>generalized_speed_tracking</type>
+				<coordinate_list>hip_flexion_r hip_adduction_r hip_rotation_r knee_angle_r ankle_angle_r subtalar_angle_r mtp_angle_r hip_flexion_l hip_adduction_l hip_rotation_l knee_angle_l ankle_angle_l subtalar_angle_l mtp_angle_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>1</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="velocity tracking lumbar">
+				<type>generalized_speed_tracking</type>
+				<coordinate_list>lumbar_extension lumbar_bending lumbar_rotation</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>0.5</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="velocity tracking upper limb">
+				<type>generalized_speed_tracking</type>
+				<coordinate_list>arm_flex_r arm_add_r arm_rot_r elbow_flex_r arm_flex_l arm_add_l arm_rot_l elbow_flex_l</coordinate_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>1</max_allowable_error>
+			</RCNLCostTerm>
+			
+			<RCNLCostTerm name="ground reaction force tracking x ">
+				<type>external_force_tracking</type>
+				<force_list>ground_force_1_vx ground_force_2_vx</force_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>10</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="ground reaction force tracking y">
+				<type>external_force_tracking</type>
+				<force_list>ground_force_1_vy ground_force_2_vy</force_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>20</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="ground reaction force tracking z">
+				<type>external_force_tracking</type>
+				<force_list>ground_force_1_vz ground_force_2_vz</force_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>10</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="ground reaction moment tracking x">
+				<type>external_moment_tracking</type>
+				<moment_list>ground_moment_1_mx ground_moment_2_mx</moment_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>5</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="ground reaction moment tracking y">
+				<type>external_moment_tracking</type>
+				<moment_list>ground_moment_1_my ground_moment_2_my</moment_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>5</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="ground reaction moment tracking z">
+				<type>external_moment_tracking</type>
+				<moment_list>ground_moment_1_mz ground_moment_2_mz</moment_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>10</max_allowable_error>
+			</RCNLCostTerm>
+			
+			<RCNLCostTerm name="load tracking lower limb">
+				<type>inverse_dynamics_load_tracking</type>
+				<load_list>hip_flexion_r_moment hip_adduction_r_moment hip_rotation_r_moment knee_angle_r_moment ankle_angle_r_moment subtalar_angle_r_moment hip_flexion_l_moment hip_adduction_l_moment hip_rotation_l_moment knee_angle_l_moment ankle_angle_l_moment subtalar_angle_l_moment </load_list>
+				<is_enabled>true</is_enabled>
+				<max_allowable_error>10</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="load tracking knee adduction">
+				<type>inverse_dynamics_load_tracking</type>
+				<load_list>knee_adduction_r_moment knee_adduction_l_moment</load_list>
+				<is_enabled>false</is_enabled>
+				<max_allowable_error>5</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="load tracking lumbar">
+				<type>inverse_dynamics_load_tracking</type>
+				<load_list>lumbar_extension_moment lumbar_bending_moment lumbar_rotation_moment</load_list>
+				<is_enabled>false</is_enabled>
+				<max_allowable_error>5</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="load tracking upper limb">
+				<type>inverse_dynamics_load_tracking</type>
+				<load_list>arm_flex_r_moment arm_rot_r_moment arm_add_r_moment elbow_flex_r_moment arm_flex_l_moment arm_rot_l_moment arm_add_l_moment elbow_flex_l_moment</load_list>
+				<is_enabled>false</is_enabled>
+				<max_allowable_error>1</max_allowable_error>
+			</RCNLCostTerm>
+		</RCNLCostTermSet>
+		<RCNLConstraintTermSet>
+			<RCNLConstraintTerm name="kinetic consistency lower limb">
+				<type>kinetic_consistency</type>
+				<load_list>hip_flexion_r_moment hip_adduction_r_moment hip_rotation_r_moment knee_angle_r_moment ankle_angle_r_moment subtalar_angle_r_moment hip_flexion_l_moment hip_adduction_l_moment hip_rotation_l_moment knee_angle_l_moment ankle_angle_l_moment subtalar_angle_l_moment</load_list>
+				<is_enabled>true</is_enabled>
+				<max_error>0.1</max_error>				
+				<min_error>-0.1</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="kinetic consistency lumbar">
+				<type>kinetic_consistency</type>
+				<load_list>lumbar_extension_moment lumbar_bending_moment lumbar_rotation_moment</load_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.01</max_error>				
+				<min_error>-0.01</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="kinetic consistency upper limb">
+				<type>kinetic_consistency</type>
+				<load_list>arm_flex_r_moment arm_add_r_moment arm_rot_r_moment elbow_flex_r_moment arm_flex_l_moment arm_add_l_moment arm_rot_l_moment elbow_flex_l_moment</load_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.01</max_error>				
+				<min_error>-0.01</min_error>
+			</RCNLConstraintTerm>
+			
+			<RCNLConstraintTerm name="residual force reduction">
+				<type>root_segment_residual_load</type>
+				<load_list>pelvis_tx_force pelvis_ty_force pelvis_tz_force</load_list>
+				<is_enabled>true</is_enabled>
+				<max_error>1</max_error>
+				<min_error>-1</min_error>				
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="residual moment reduction">
+				<type>root_segment_residual_load</type>
+				<load_list>pelvis_list_moment pelvis_tilt_moment pelvis_rotation_moment</load_list>
+				<is_enabled>true</is_enabled>
+				<max_error>0.1</max_error>		
+				<min_error>-0.1</min_error>			
+			</RCNLConstraintTerm>
+			
+			<RCNLConstraintTerm name="position periodicity lower limb">
+				<type>state_position_periodicity</type>
+				<coordinate_list>hip_flexion_r hip_adduction_r hip_rotation_r knee_angle_r ankle_angle_r subtalar_angle_r mtp_angle_r hip_flexion_l hip_adduction_l hip_rotation_l knee_angle_l ankle_angle_l subtalar_angle_l mtp_angle_l</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.0175</max_error>				
+				<min_error>-0.0175</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="position periodicity lumbar">
+				<type>state_position_periodicity</type>
+				<coordinate_list>lumbar_extension lumbar_bending lumbar_rotation</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.0175</max_error>				
+				<min_error>-0.0175</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="position periodicity upper limb">
+				<type>state_position_periodicity</type>
+				<coordinate_list>arm_flex_r arm_add_r arm_rot_r elbow_flex_r arm_flex_l arm_add_l arm_rot_l elbow_flex_l</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.0175</max_error>				
+				<min_error>-0.0175</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="position periodicity pelvis translation">
+				<type>state_position_periodicity</type>
+				<coordinate_list>pelvis_ty pelvis_ty pelvis_tz</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.01</max_error>				
+				<min_error>-0.01</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="position periodicity pelvis rotation">
+				<type>state_position_periodicity</type>
+				<coordinate_list>pelvis_tilt pelvis_list pelvis_rotation</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.0175</max_error>				
+				<min_error>-0.0175</min_error>
+			</RCNLConstraintTerm>
+			
+			<RCNLConstraintTerm name="velocity periodicity lower limb">
+				<type>state_velocity_periodicity</type>
+				<coordinate_list>hip_flexion_r hip_adduction_r hip_rotation_r knee_angle_r ankle_angle_r subtalar_angle_r mtp_angle_r hip_flexion_l hip_adduction_l hip_rotation_l knee_angle_l ankle_angle_l subtalar_angle_l mtp_angle_l</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.02</max_error>				
+				<min_error>-0.02</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="velocity periodicity lumbar">
+				<type>state_velocity_periodicity</type>
+				<coordinate_list>lumbar_extension lumbar_bending lumbar_rotation</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.02</max_error>				
+				<min_error>-0.02</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="velocity periodicity upper limb">
+				<type>state_velocity_periodicity</type>
+				<coordinate_list>arm_flex_r arm_add_r arm_rot_r elbow_flex_r arm_flex_l arm_add_l arm_rot_l elbow_flex_l</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.02</max_error>				
+				<min_error>-0.02</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="velocity periodicity pelvis translation">
+				<type>state_velocity_periodicity</type>
+				<coordinate_list>pelvis_tx pelvis_ty pelvis_tz </coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.02</max_error>				
+				<min_error>-0.02</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="velocity periodicity pelvis rotation">
+				<type>state_velocity_periodicity</type>
+				<coordinate_list>pelvis_tilt pelvis_list pelvis_rotation</coordinate_list>
+				<is_enabled>false</is_enabled>
+				<max_error>0.02</max_error>				
+				<min_error>-0.02</min_error>
+			</RCNLConstraintTerm>
+		</RCNLConstraintTermSet>
+	</TrackingOptimizationTool>
+</NMSMPipelineDocument>
