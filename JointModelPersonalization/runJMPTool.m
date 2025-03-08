@@ -1,5 +1,5 @@
 %% Run JMP for gait trial
 
 tic
-JointModelPersonalizationTool("JMPSettingsSequentialBottomUp.xml")
+JointModelPersonalizationTool("JMPSettingsSimultaneous.xml")
 toc

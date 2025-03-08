@@ -1,0 +1,3 @@
+close all
+plotTreatmentOptimizationJointAngles("..\JointModelPersonalization\UF_Subject_1_Scaled_JMPSequential.osim", ...
+    "IKResultsScaledGenericCropped.mot", ["IKResultsSequentialCropped.mot", "IKResultsSimultaneousCropped.mot"], 2, 3)
